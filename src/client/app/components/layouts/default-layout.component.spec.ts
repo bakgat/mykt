@@ -52,6 +52,9 @@ export function main() {
                         let headers = sidenavDOMEl.querySelectorAll('h3');
                         t.e(headers.length).toEqual(1);
                         t.e(headers[0].textContent).toEqual('Bibliotheek');
+
+                        let items = sidenavDOMEl.querySelectorAll('li');
+                        t.e(items.length).toEqual(2);
                     });
             }));
     });

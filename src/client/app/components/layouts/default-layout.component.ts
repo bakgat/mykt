@@ -12,4 +12,11 @@ import { Component } from '@angular/core';
   styleUrls: ['default-layout.component.css']
 })
 export class DefaultLayoutComponent {
+  menu = [{
+    name: 'Bibliotheek',
+    items: [
+      { name: 'Boeken', link: '/library/books', icon: 'library_books' },
+      { name: 'Films', link: '/library/movies', icon: 'movie_filter' }
+    ]
+  }];
 }
