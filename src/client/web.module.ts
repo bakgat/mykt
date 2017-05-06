@@ -1,9 +1,10 @@
 // angular
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { Http } from '@angular/http';
+import { MaterialModule } from '@angular/material';
 
 // libs
 import { StoreModule } from '@ngrx/store';
@@ -76,8 +77,11 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
       { provide: ConsoleService, useFactory: (cons) },
       { provide: LogTarget, useFactory: (consoleLogTarget), deps: [ConsoleService], multi: true }
     ]),
+    //angular modules
     routerModule,
     AnalyticsModule,
+    MaterialModule.forRoot(),
+    //app modules
     MultilingualModule.forRoot([{
       provide: TranslateLoader,
       deps: [Http],
@@ -96,6 +100,10 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     {
       provide: APP_BASE_HREF,
       useValue: '<%= APP_BASE %>'
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'nl-BE'
     }
   ],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Route } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MaterialModule } from '@angular/material';
 
 // libs
 import { StoreModule } from '@ngrx/store';
@@ -19,6 +20,7 @@ import { reducer } from '../shared/i18n/index';
 
 // module
 import { AppComponent } from './app.component';
+import { DEFAULT_COMPONENTS } from './layouts/index';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
@@ -35,11 +37,13 @@ const testModuleConfig = () => {
       Angulartics2Module.forRoot([
         Angulartics2Segment
       ]),
+      MaterialModule,
       MultilingualModule,
       StoreModule.provideStore({ }),
       RouterTestingModule.withRoutes(config)
     ],
     declarations: [
+      ...DEFAULT_COMPONENTS,
       TestComponent, AppComponent,
       HomeComponent, AboutComponent,
       NavbarComponent, ToolbarComponent
@@ -71,6 +75,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-app></sd-app>'
+  template: '<mykt-app></mykt-app>'
 })
 class TestComponent {}

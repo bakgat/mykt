@@ -1,0 +1,65 @@
+
+table.md-table  {
+    border-collapse: collapse;
+    min-width: 100%;
+    width: 100%;
+    border-spacing: 0;
+    overflow: hidden;
+
+    > thead > tr {
+        width: 100%;
+        border-spacing: 0;
+        overflow: hidden;
+        border-bottom: 1px solid #eee;
+        height: 56px;
+
+        > th {
+            vertical-align: middle;
+            color: rgba(0,0,0,.54);
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+    }
+
+    & > tbody > tr,
+    & > tfoot > tr {
+        height: 48px;
+
+        > td {
+            color: rgba(0,0,0,.87);
+            font-size: 13px;
+            border-top: 1px rgba(0,0,0,.12) solid;
+            border-bottom: 1px solid #eee;
+        }
+    }
+
+    & > tbody > tr {
+        &:hover {
+            background: #eee;
+        }
+        &.md-row-select {
+            background: #f5f5f5;
+        }
+    }
+
+    & td, 
+    & th {
+        vertical-align: middle;
+        text-align: left;
+
+        &:last-child {
+            padding: 0 24px 0 0;
+        }
+    }
+
+    &:not(.md-row-select) td,
+    &:not(.md-row-select) th {
+        &:first-child {
+            padding: 0 24px;
+        }
+        &:nth-child(n+2):nth-last-child(n+2) {
+            padding: 0 56px 0 0;
+        }
+    }
+}
