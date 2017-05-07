@@ -24,6 +24,13 @@ const testModuleConfig = () => {
     });
 };
 
+let menu = [{
+    name: 'Bibliotheek',
+    items: [
+      { name: 'Boeken', link: '/library/books', icon: 'library_books' },
+      { name: 'Films', link: '/library/movies', icon: 'movie_filter' }
+    ]
+  }];
 export function main() {
     t.describe('@Component: DefaultLayoutComponent', () => {
 
@@ -50,11 +57,15 @@ export function main() {
                         let sidenavDOMEl = fixture.debugElement.children[0].nativeElement;
 
                         let headers = sidenavDOMEl.querySelectorAll('h3');
-                        t.e(headers.length).toEqual(1);
-                        t.e(headers[0].textContent).toEqual('Bibliotheek');
-
                         let items = sidenavDOMEl.querySelectorAll('li');
-                        t.e(items.length).toEqual(2);
+
+                        for(var i=0;i<menu.length-1;i++) {
+                            t.e(headers[i].textContent).toEqual(menu[i].name);
+                            for(var x=0;x<menu[i].items.length -1; x++) {
+                                t.e(items[(i+1)*x].textContent).toEqual(menu[i].items[x].name);
+                                t.e(items[(i+1)*x].attribute('href')).toEqual(menu[i].items[x].link);
+                            }
+                        }                        
                     });
             }));
     });

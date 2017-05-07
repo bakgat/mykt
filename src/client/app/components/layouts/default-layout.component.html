@@ -6,7 +6,7 @@
                 <ul>
                     <li *ngFor="let element of item.items">
                         <a [routerLink]="element.link" [routerLinkActive]="['router-link-active']">
-                            <md-icon md-list-icon>{{element.icon}}</md-icon> {{element.name}}
+                            {{element.name}}
                         </a>
                     </li>
                 </ul>
