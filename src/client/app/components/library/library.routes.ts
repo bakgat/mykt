@@ -2,7 +2,7 @@ import { LibraryComponent } from './library.component';
 
 export const LibraryRoutes: Array<any> = [
   {
-    path: '',
+    path: 'library/books',
     component: LibraryComponent
   }
 ];

@@ -24,7 +24,8 @@
     ],
     "types": [
       "node",
-      "core-js"
+      "core-js",
+      "hammerjs"
     ]
   },
   "files": [

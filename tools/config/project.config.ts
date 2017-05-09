@@ -12,7 +12,7 @@ export class ProjectConfig extends SeedAdvancedConfig {
 
   constructor() {
     super();
-    // this.APP_TITLE = 'Put name of your app here';
+    this.APP_TITLE = 'Mijn Klimtoren';
     // this.GOOGLE_ANALYTICS_ID = 'Your site's ID';
 
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
@@ -42,6 +42,9 @@ export class ProjectConfig extends SeedAdvancedConfig {
     let additionalPackages: ExtendPackages[] = [{
       name: '@angular/material',
       path: 'node_modules/@angular/material/bundles/material.umd.js'
+    }, {
+      name: 'hammerjs',
+      path: 'node_modules/hammerjs/hammer.min.js'
     }];
     this.addPackagesBundles(additionalPackages);
 

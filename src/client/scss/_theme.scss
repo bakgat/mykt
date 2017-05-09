@@ -1,8 +1,8 @@
-@import '../../../node_modules/@angular/material/core/theming/all-theme';
+@import '../../../node_modules/@angular/material/core/theming';
 //@import '../app/core/nav/menu-item-theme.component';
 //@import '../app/shared/toolbar/toolbar-theme.component';
  
-@include md-core();
+ @include md-core();
 
 $primary: md-palette($md-orange, 800);
 $accent: md-palette($md-blue, 600, A100, A400);

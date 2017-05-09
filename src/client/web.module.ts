@@ -1,3 +1,4 @@
+import 'hammerjs';
 // angular
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
