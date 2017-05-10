@@ -1,8 +1,8 @@
 import { IBookState, initialState } from './book-list.state';
-import { IBook } from './book';
+import {  IBook }  from './book';
 import * as actions from './book-list.action';
 
-export function reducer(
+export function bookReducer(
     state: IBookState = initialState,
     action: actions.Actions
 ): IBookState {

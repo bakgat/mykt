@@ -17,7 +17,6 @@ export class BookListEffects {
 
     @Effect() init$: Observable<Action> = this.actions$
         .ofType(bookList.ActionTypes.INIT)
-        .startWith(new bookList.InitAction)
         .switchMap(() => this.bookListService.getBooks())
         .map(payload => {
             let books = payload;

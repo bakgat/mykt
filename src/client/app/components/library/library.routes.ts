@@ -1,8 +1,8 @@
-import { LibraryComponent } from './library.component';
+import { BooksComponent } from './books.component';
 
 export const LibraryRoutes: Array<any> = [
   {
     path: 'library/books',
-    component: LibraryComponent
+    component: BooksComponent
   }
 ];

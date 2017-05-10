@@ -24,7 +24,8 @@ import { AnalyticsModule } from './app/shared/analytics/analytics.module';
 import { MultilingualModule, translateLoaderFactory } from './app/shared/i18n/multilingual.module';
 import { MultilingualEffects } from './app/shared/i18n/index';
 import { SampleModule } from './app/shared/sample/sample.module';
-import { NameListEffects } from './app/shared/sample/index';
+import { BookListEffects } from './app/shared/library/index';
+import { LibraryModule } from './app/shared/library/library.module';
 
 // config
 import { Config, WindowService, ConsoleService, createConsoleTarget, provideConsoleTarget, LogTarget, LogLevel, ConsoleTarget } from './app/shared/core/index';
@@ -89,10 +90,11 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
       useFactory: (translateLoaderFactory)
     }]),
     SampleModule,
+    LibraryModule,
     StoreModule.provideStore(AppReducer),
     DEV_IMPORTS,
     EffectsModule.run(MultilingualEffects),
-    EffectsModule.run(NameListEffects)
+    EffectsModule.run(BookListEffects)
   ],
   declarations: [
     APP_COMPONENTS

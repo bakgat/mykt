@@ -41,6 +41,9 @@ import * as fromMultilingual from '../../i18n/index';
 import { IMultilingualState } from '../../i18n/index';
 import * as fromSample from '../../sample/index';
 import { ISampleState } from '../../sample/index';
+import * as fromLibrary from '../../library/index';
+import { IBookState } from '../../library/index';
+
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -49,6 +52,7 @@ import { ISampleState } from '../../sample/index';
 export interface IAppState {
   i18n: fromMultilingual.IMultilingualState;
   sample: fromSample.ISampleState;
+  book: fromLibrary.IBookState;
 };
 
 /**
@@ -60,7 +64,8 @@ export interface IAppState {
  */
 const reducers = {
   i18n: fromMultilingual.reducer,
-  sample: fromSample.reducer
+  sample: fromSample.reducer,
+  book: fromLibrary.bookReducer
 };
 
 const developmentReducer: ActionReducer<IAppState> = compose(storeFreeze, combineReducers)(reducers);
@@ -80,6 +85,10 @@ export function getMultilingualState(state$: Observable<IAppState>): Observable<
 export function getNameListState(state$: Observable<IAppState>): Observable<ISampleState> {
   return state$.select(s => s.sample);
 }
+export function getBookListState(state$: Observable<IAppState>): Observable<IBookState> {
+  return state$.select(s => s.book);
+}
 
 export const getLang: any = compose(fromMultilingual.getLang, getMultilingualState);
 export const getNames: any = compose(fromSample.getNames, getNameListState);
+export const getBooks: any = compose(fromLibrary.getBooks, getBookListState);

@@ -1,0 +1,22 @@
+<table>
+    <colgroup>
+        <col style="width: 62px;">
+        <!-- for edit icons -->
+        <col>
+        <col>
+    </colgroup>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Titel</th>
+            <th>Auteurs</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of (books$ | async)">
+            <td></td>
+            <td>{{book.title}}</td>
+            <td>{{book.authors.join(', ')}}
+        </tr>
+    </tbody>
+</table>

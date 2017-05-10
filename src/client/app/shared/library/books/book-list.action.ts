@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../core/utils/type';
 import { CATEGORY } from '../category.common';
-import { IBook } from './book';
+import {  IBook }  from './book';
 
 /**
  * For each action type in an action group, make a simple
@@ -73,7 +73,7 @@ export class RemoveAction implements Action {
 
 export class BookRemovedAction implements Action {
     type = ActionTypes.BOOK_REMOVED;
-    constructor(public payload: IBook) {  }
+    constructor(public payload: IBook) { }
 }
 /**
  * Export a type alias of all actions in this action group

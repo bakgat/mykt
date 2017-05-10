@@ -13,7 +13,7 @@ import { EffectsTestingModule, EffectsRunner } from '@ngrx/effects/testing';
 import { t } from '../../test/index';
 // import {TEST_CORE_PROVIDERS, GET_HTTP_PROVIDERS_INJECTOR, TEST_LOCATION_PROVIDERS} from '../../core/testing/index';
 import { AnalyticsModule } from '../../analytics/analytics.module';
-import { IBook, BookListService, BookListEffects, reducer, InitAction, InitializedAction, AddAction, BookAddedAction } from './index';
+import { IBook, BookListService, BookListEffects, bookReducer, InitAction, InitializedAction, AddAction, BookAddedAction } from './index';
 import { books } from './book.mock';
 
 // test module configuration for each test
@@ -21,7 +21,7 @@ const testModuleConfig = () => {
   TestBed.configureTestingModule({
     imports: [
       FormsModule, AnalyticsModule,
-      StoreModule.provideStore({ sample: reducer }),
+      StoreModule.provideStore({ book: bookReducer }),
       EffectsTestingModule,
       HttpModule, RouterTestingModule
     ],
