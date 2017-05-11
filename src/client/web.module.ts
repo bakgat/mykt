@@ -19,10 +19,13 @@ import { routes } from './app/components/app.routes';
 
 // feature modules
 import { CoreModule } from './app/shared/core/core.module';
-import { AppReducer } from './app/shared/ngrx/index';
 import { AnalyticsModule } from './app/shared/analytics/analytics.module';
-import { BookListEffects } from './app/shared/library/index';
 import { LibraryModule } from './app/shared/library/library.module';
+import { TabListModule } from './app/shared/tablist/tablist.module';
+
+//feature - ngrx
+import { AppReducer } from './app/shared/ngrx/index';
+import { BookListEffects } from './app/shared/library/index';
 
 // config
 import { Config, WindowService, ConsoleService, createConsoleTarget, provideConsoleTarget, LogTarget, LogLevel, ConsoleTarget } from './app/shared/core/index';
@@ -81,6 +84,7 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     AnalyticsModule,
     MaterialModule.forRoot(),
     //app modules
+    TabListModule,
     LibraryModule,
     StoreModule.provideStore(AppReducer),
     DEV_IMPORTS,

@@ -1,0 +1,12 @@
+<div class="mykt-tablist-item-header-wrapper" (click)="headerClick($event)">
+    <ng-content select="mykt-tablist-item-header"></ng-content>
+</div>
+
+<md-progress-bar mode="indeterminate" *ngIf="loading && active"></md-progress-bar>
+
+<ng-content *ngIf="!loading"></ng-content>
+
+<div fxLayout="row" fxLayoutAlign="end center"  *ngIf="!loading && active" class="actions">
+    <button md-button (click)="cancel()" *ngIf="cancelLabel">{{cancelLabel}}</button>
+    <button md-button (click)="save()" class="md-primary" *ngIf="saveLabel">{{saveLabel}}</button>
+</div>
