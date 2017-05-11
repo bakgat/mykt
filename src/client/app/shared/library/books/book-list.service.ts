@@ -32,4 +32,8 @@ export class BookListService extends Analytics {
         return this.http.get(`${Config.ENVIRONMENT().API}/library/books`)
             .map(res => res.json());
     }
+    getBookDetail(id: string): Observable<IBook> {
+        return this.http.get(`${Config.ENVIRONMENT().API}/library/books/${id}`)
+            .map(res => res.json());
+    }
 }

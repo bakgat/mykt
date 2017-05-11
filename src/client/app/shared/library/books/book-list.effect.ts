@@ -7,7 +7,7 @@ import { Effect, Actions } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 
 // module
-import {  IBook } from './book';
+import { IBook } from './book';
 import { BookListService } from './book-list.service';
 import * as bookList from './book-list.action';
 
@@ -24,6 +24,14 @@ export class BookListEffects {
         })
         .catch(() => Observable.of(new bookList.InitFailedAction()));
 
+    @Effect() initBookDetail$: Observable<Action> = this.actions$
+        .ofType(bookList.ActionTypes.INIT_BOOK_DETAIL)
+        .switchMap(action => this.bookListService.getBookDetail(action.payload))
+        .map((payload: IBook) => {
+            let book = payload;
+            return new bookList.InitializedBookDetailAction(book);
+        });
+
     @Effect() add$: Observable<Action> = this.actions$
         .ofType(bookList.ActionTypes.ADD)
         .map(action => {
@@ -32,6 +40,8 @@ export class BookListEffects {
             this.bookListService.track(bookList.ActionTypes.BOOK_ADDED, { label: `${book.title} (isbn: ${book.isbn})` });
             return new bookList.BookAddedAction(book);
         });
+
+
 
     constructor(
         private store: Store<any>,

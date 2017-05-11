@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Route } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule }  from '@angular/material';
 
 // libs
 import { StoreModule } from '@ngrx/store';
@@ -20,13 +20,11 @@ import { reducer } from '../shared/i18n/index';
 
 // module
 import { AppComponent } from './app.component';
-import { DEFAULT_COMPONENTS } from './layouts/index';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
+import { DEFAULT_COMPONENTS }  from './layouts/index';
+import { LIBRARY_COMPONENTS, BooksComponent } from './library/index';
 
-const config:Route[] = [
-  {path: '', component: HomeComponent},
-  {path: 'about', component: AboutComponent}
+const config: Route[] = [
+  { path: 'library/books', component: BooksComponent }
 ];
 
 // test module configuration for each test
@@ -39,14 +37,15 @@ const testModuleConfig = () => {
       ]),
       MaterialModule,
       MultilingualModule,
-      StoreModule.provideStore({ }),
+      StoreModule.provideStore({}),
       RouterTestingModule.withRoutes(config)
     ],
     declarations: [
       ...DEFAULT_COMPONENTS,
+      ...LIBRARY_COMPONENTS,
       TestComponent, AppComponent,
-      HomeComponent, AboutComponent,
-      NavbarComponent, ToolbarComponent
+      /* HomeComponent, AboutComponent,
+       NavbarComponent, ToolbarComponent*/
     ],
     providers: [
       TEST_CORE_PROVIDERS(),
@@ -77,4 +76,4 @@ export function main() {
   selector: 'test-cmp',
   template: '<mykt-app></mykt-app>'
 })
-class TestComponent {}
+class TestComponent { }

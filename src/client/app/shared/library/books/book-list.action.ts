@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../core/utils/type';
 import { CATEGORY } from '../category.common';
-import {  IBook }  from './book';
+import { IBook } from './book';
 
 /**
  * For each action type in an action group, make a simple
@@ -15,6 +15,8 @@ export interface IBookListActions {
     INIT: string;
     INITIALIZED: string;
     INIT_FAILED: string;
+    INIT_BOOK_DETAIL: string;
+    BOOK_DETAIL_INITIALIZED: string;
     ADD: string;
     BOOK_ADDED: string;
     REMOVE: string;
@@ -25,6 +27,8 @@ export const ActionTypes: IBookListActions = {
     INIT: type(`${CATEGORY} Init`),
     INITIALIZED: type(`${CATEGORY} Initialized`),
     INIT_FAILED: type(`${CATEGORY} Init Failed`),
+    INIT_BOOK_DETAIL: type(`${CATEGORY} Init Book Detail`),
+    BOOK_DETAIL_INITIALIZED: type(`${CATEGORY} Initialized Book Detail`),
     ADD: type(`${CATEGORY} Add`),
     BOOK_ADDED: type(`${CATEGORY} Book Added`),
     REMOVE: type(`${CATEGORY} Remove`),
@@ -52,6 +56,19 @@ export class InitializedAction implements Action {
 export class InitFailedAction implements Action {
     type = ActionTypes.INIT_FAILED;
     payload: IBook = null;
+}
+
+export class InitBookDetailAction implements Action {
+    type = ActionTypes.INIT_BOOK_DETAIL;
+
+    constructor(public payload: string) {  }
+}
+export class InitializedBookDetailAction implements Action {
+    type = ActionTypes.BOOK_DETAIL_INITIALIZED;
+
+    constructor(public payload: IBook) { 
+        console.log(payload);
+      }
 }
 
 export class AddAction implements Action {
@@ -83,6 +100,8 @@ export type Actions
     = InitAction
     | InitializedAction
     | InitFailedAction
+    | InitBookDetailAction
+    | InitializedBookDetailAction
     | AddAction
     | BookAddedAction
     | RemoveAction

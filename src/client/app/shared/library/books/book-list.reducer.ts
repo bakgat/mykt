@@ -1,5 +1,5 @@
 import { IBookState, initialState } from './book-list.state';
-import {  IBook }  from './book';
+import { IBook } from './book';
 import * as actions from './book-list.action';
 
 export function bookReducer(
@@ -10,6 +10,17 @@ export function bookReducer(
         case actions.ActionTypes.INITIALIZED:
             return (<any>Object).assign({}, state, {
                 books: action.payload
+            });
+
+        case actions.ActionTypes.INIT_BOOK_DETAIL:
+            return (<any>Object).assign({}, state, {
+                selectedBook: state.books.find((book) => {
+                    return book._id === action.payload;
+                })
+            });
+        case actions.ActionTypes.BOOK_DETAIL_INITIALIZED:
+            return (<any>Object).assign({}, state, {
+                selectedBook: action.payload
             });
 
         case actions.ActionTypes.BOOK_ADDED:

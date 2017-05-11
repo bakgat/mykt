@@ -28,7 +28,7 @@ const testModuleConfig = () => {
       CoreModule,
       RouterTestingModule,
       AnalyticsModule,
-      StoreModule.provideStore({ sample: bookReducer }),
+      StoreModule.provideStore({ books: bookReducer }),
       EffectsModule.run(BookListEffects)
     ],
     declarations: [BooksComponent, TestComponent],

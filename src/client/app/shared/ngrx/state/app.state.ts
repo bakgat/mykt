@@ -31,42 +31,8 @@ import { storeFreeze } from 'ngrx-store-freeze';
  */
 import { combineReducers } from '@ngrx/store';
 
-/**
- * Every reducer module's default export is the reducer function itself. In
- * addition, each module should export a type or interface that describes
- * the state of the reducer plus any selector functions. The `* as`
- * notation packages up all of the exports into a single object.
- */
-import * as fromMultilingual from '../../i18n/index';
-import { IMultilingualState } from '../../i18n/index';
-import * as fromSample from '../../sample/index';
-import { ISampleState } from '../../sample/index';
-import * as fromLibrary from '../../library/index';
-import { IBookState } from '../../library/index';
-
-
-/**
- * As mentioned, we treat each reducer like a table in a database. This means
- * our top level state interface is just a map of keys to inner state types.
- */
-export interface IAppState {
-  i18n: fromMultilingual.IMultilingualState;
-  sample: fromSample.ISampleState;
-  book: fromLibrary.IBookState;
-};
-
-/**
- * Because metareducers take a reducer function and return a new reducer,
- * we can use our compose helper to chain them together. Here we are
- * using combineReducers to make our top level reducer, and then
- * wrapping that in storeLogger. Remember that compose applies
- * the result from right to left.
- */
-const reducers = {
-  i18n: fromMultilingual.reducer,
-  sample: fromSample.reducer,
-  book: fromLibrary.bookReducer
-};
+import { IAppState } from './app.state.interface';
+import { reducers } from './app.reducers';
 
 const developmentReducer: ActionReducer<IAppState> = compose(storeFreeze, combineReducers)(reducers);
 const productionReducer: ActionReducer<IAppState> = combineReducers(reducers);
@@ -79,16 +45,5 @@ export function AppReducer(state: any, action: any) {
   }
 }
 
-export function getMultilingualState(state$: Observable<IAppState>): Observable<IMultilingualState> {
-  return state$.select(s => s.i18n);
-}
-export function getNameListState(state$: Observable<IAppState>): Observable<ISampleState> {
-  return state$.select(s => s.sample);
-}
-export function getBookListState(state$: Observable<IAppState>): Observable<IBookState> {
-  return state$.select(s => s.book);
-}
-
-export const getLang: any = compose(fromMultilingual.getLang, getMultilingualState);
-export const getNames: any = compose(fromSample.getNames, getNameListState);
-export const getBooks: any = compose(fromLibrary.getBooks, getBookListState);
+export * from './app.state.interface';
+export * from './library.states';

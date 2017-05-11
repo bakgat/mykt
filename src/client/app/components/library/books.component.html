@@ -1,4 +1,4 @@
-<table>
+<table class="mat-table">
     <colgroup>
         <col style="width: 62px;">
         <!-- for edit icons -->
@@ -15,7 +15,7 @@
     <tbody>
         <tr *ngFor="let book of (books$ | async)">
             <td></td>
-            <td>{{book.title}}</td>
+            <td><a [routerLink]="['/library/books',  book._id]">{{book.title}}</a></td>
             <td>{{book.authors.join(', ')}}
         </tr>
     </tbody>

@@ -21,9 +21,6 @@ import { routes } from './app/components/app.routes';
 import { CoreModule } from './app/shared/core/core.module';
 import { AppReducer } from './app/shared/ngrx/index';
 import { AnalyticsModule } from './app/shared/analytics/analytics.module';
-import { MultilingualModule, translateLoaderFactory } from './app/shared/i18n/multilingual.module';
-import { MultilingualEffects } from './app/shared/i18n/index';
-import { SampleModule } from './app/shared/sample/sample.module';
 import { BookListEffects } from './app/shared/library/index';
 import { LibraryModule } from './app/shared/library/library.module';
 
@@ -84,16 +81,9 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     AnalyticsModule,
     MaterialModule.forRoot(),
     //app modules
-    MultilingualModule.forRoot([{
-      provide: TranslateLoader,
-      deps: [Http],
-      useFactory: (translateLoaderFactory)
-    }]),
-    SampleModule,
     LibraryModule,
     StoreModule.provideStore(AppReducer),
     DEV_IMPORTS,
-    EffectsModule.run(MultilingualEffects),
     EffectsModule.run(BookListEffects)
   ],
   declarations: [

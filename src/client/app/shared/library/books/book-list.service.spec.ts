@@ -21,7 +21,7 @@ const testModuleConfig = () => {
   TestBed.configureTestingModule({
     imports: [
       FormsModule, AnalyticsModule,
-      StoreModule.provideStore({ book: bookReducer }),
+      StoreModule.provideStore({ books: bookReducer }),
       EffectsTestingModule,
       HttpModule, RouterTestingModule
     ],

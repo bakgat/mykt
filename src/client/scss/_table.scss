@@ -1,5 +1,5 @@
 
-table.md-table  {
+table.mat-table  {
     border-collapse: collapse;
     min-width: 100%;
     width: 100%;
@@ -38,7 +38,7 @@ table.md-table  {
         &:hover {
             background: #eee;
         }
-        &.md-row-select {
+        &.mat-row-select {
             background: #f5f5f5;
         }
     }
@@ -53,8 +53,8 @@ table.md-table  {
         }
     }
 
-    &:not(.md-row-select) td,
-    &:not(.md-row-select) th {
+    &:not(.mat-row-select) td,
+    &:not(.mat-row-select) th {
         &:first-child {
             padding: 0 24px;
         }
