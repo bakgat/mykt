@@ -21,10 +21,9 @@ import { TABLIST_COMPONENTS } from '../shared/tablist/index';
 
 // modules
 import { AppComponent, APP_COMPONENTS } from './index';
-import { BooksComponent } from './library/index';
 
 const config: Route[] = [
-  { path: 'library/books', component: BooksComponent }
+  
 ];
 
 // test module configuration for each test
