@@ -6,7 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { Http } from '@angular/http';
 import { MaterialModule } from '@angular/material';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // libs
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -83,6 +84,8 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     routerModule,
     AnalyticsModule,
     MaterialModule.forRoot(),
+    BrowserAnimationsModule,
+    FlexLayoutModule,
     //app modules
     TabListModule,
     LibraryModule,

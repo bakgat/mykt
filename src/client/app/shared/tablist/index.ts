@@ -1,21 +1,24 @@
 import { TabListComponent } from './tablist.component';
-import { TabListHeaderDirective, TabListTitleDirective, TabListSubTitleDirective } from './tablist-header.directive';
+import { TabListHeaderComponent, TabListTitleComponent, TabListSubTitleComponent } from './tablist-header.component';
 import { TabListContentComponent } from './tablist-content.component';
 import { TabListItemComponent } from './tablist-item.component';
-import { TabListItemHeaderDirective } from './tablist-item-header.directive';
+import { TabListItemHeaderComponent } from './tablist-item-header.component';
+import { TabListItemContentComponent } from './tablist-item-content.component';
 
 export const TABLIST_COMPONENTS = [
     TabListComponent,
-    TabListHeaderDirective,
-    TabListTitleDirective,
-    TabListSubTitleDirective,
+    TabListHeaderComponent,
+    TabListTitleComponent,
+    TabListSubTitleComponent,
     TabListContentComponent,
     TabListItemComponent,
-    TabListItemHeaderDirective
+    TabListItemHeaderComponent,
+    TabListItemContentComponent
 ];
 
 export * from './tablist.component';
-export * from './tablist-header.directive';
+export * from './tablist-header.component';
 export * from './tablist-content.component';
 export * from './tablist-item.component';
-export * from './tablist-item-header.directive';
+export * from './tablist-item-header.component';
+export * from './tablist-item-content.component';

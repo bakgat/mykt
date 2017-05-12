@@ -1,1 +1,33 @@
-{{(book$|async)?.title}}
+<mykt-tablist #bookDetail>
+    <mykt-tablist-header>
+        <mykt-tablist-title>
+            {{book.title}}
+        </mykt-tablist-title>
+    </mykt-tablist-header>
+
+    <mykt-tablist-content>
+        <mykt-tablist-item>
+            <mykt-tablist-item-header>
+                <mykt-tablist-title>Details</mykt-tablist-title>
+                <mykt-tablist-subtitle>Titel, auteurs, isbn, ... weergeven en beheren.</mykt-tablist-subtitle>
+            </mykt-tablist-item-header>
+            <mykt-tablist-item-content>
+                <div fxLayout="row">
+                    <md-input-container fxFlex>
+                        <input mdInput type="text" placeholder="Titel" #title [(ngModel)]="book.title">
+                    </md-input-container>
+                </div>
+            </mykt-tablist-item-content>
+        </mykt-tablist-item>
+
+        <mykt-tablist-item [disabled]="true">
+            <mykt-tablist-item-header>
+                <mykt-tablist-title>Uitlenen</mykt-tablist-title>
+                <mykt-tablist-subtitle>Wie heeft {{book.title}} geleend? .</mykt-tablist-subtitle>
+            </mykt-tablist-item-header>
+            <mykt-tablist-item-content>
+
+            </mykt-tablist-item-content>
+        </mykt-tablist-item>
+    </mykt-tablist-content>
+</mykt-tablist>

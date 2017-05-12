@@ -3,6 +3,7 @@ import { Component, Injector, DebugElement } from '@angular/core';
 import { TestBed, getTestBed, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
+import { MaterialModule } from '@angular/material';
 
 import {
     BaseRequestOptions,
@@ -24,6 +25,7 @@ import { IAppState } from '../../shared/ngrx/index';
 import { BookListService, bookReducer } from '../../shared/library/index';
 import { BookDetailComponent } from './book-detail.component';
 import { books } from '../../shared/library/books/book.mock';
+import { TABLIST_COMPONENTS } from '../../shared/tablist/index';
 
 const bookListState = {
     books: books
@@ -38,8 +40,9 @@ const testModuleConfig = () => {
             AnalyticsModule,
             StoreModule.provideStore({ books: bookReducer },
                 { books: bookListState, selectedBook: null }), //inject mock state
+            MaterialModule
         ],
-        declarations: [BookDetailComponent],
+        declarations: [...TABLIST_COMPONENTS, BookDetailComponent],
         providers: [
             BookListService,
             BaseRequestOptions,
@@ -85,12 +88,10 @@ export function main() {
 
         t.it('should work', () => {
             component.ngOnInit();
-
-            component.book$.subscribe(result => {
-                t.e(result).toBeDefined();
-                t.e(result._id).toEqual(books[0]._id);
-                t.e(result.title).toEqual(books[0].title);
-            });
+            let book = component.book;
+            t.e(book).toBeDefined();
+            t.e(book._id).toEqual(books[0]._id);
+            t.e(book.title).toEqual(books[0].title);
         });
     });
 }

@@ -1,0 +1,117 @@
+@import '../../../../../node_modules/@angular/material/_theming';
+
+$mykt-tablist-default-padding: 24px !default;
+$mykt-tablist-border-radius: 2px !default;
+$mykt-tablist-header-size: 40px !default;
+
+.mykt-tablist {
+    
+    display: block;
+    position: relative;
+    padding: $mykt-tablist-default-padding;
+    border-radius: $mykt-tablist-border-radius;
+    font-family: $mat-font-family;
+
+}
+
+%mykt-tablist-section-base {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.mykt-tablist-header-wrapper {
+    display: block;
+    margin: 0 -24px;
+    padding: 16px 24px;
+    @include mat-elevation-transition;
+
+    &:not([class*='mat-elevation-z']) {
+        @include mat-elevation(2);
+    }
+}
+
+.mykt-tablist-header {
+    .mykt-tablist-title {
+        @extend %mykt-tablist-section-base;
+        font-size: 24px;
+        font-weight: 400;
+    }
+    .mykt-tablist-subtitle {
+        @extend %mykt-tablist-section-base;
+        font-size: $mat-body-font-size-base;
+    }
+}
+
+.mykt-tablist-content {
+    @extend %mykt-tablist-section-base;
+    list-style: none;
+    margin: 0 -24px;
+
+    mykt-tablist-item  { 
+        display: block;
+        background: #fff;
+        @include mat-elevation-transition;
+
+        &:not([class*='mat-elevation-z']) {
+            @include mat-elevation(2);
+        }
+
+        .mykt-tablist-item-header-wrapper {
+            cursor: pointer;
+            display: list-item;
+            padding: 16px;
+            background: #fff;
+            border-top: solid 1px rgba(0, 0, 0, .12);
+            outline: none;
+
+            .mykt-tablist-title {
+                padding: 10px 0;
+                font-size: 1rem;
+                font-weight: 700;
+            }
+            .mykt-tablist-subtitle {
+                padding: 10px 0;
+                font-size: .75rem;
+                font-weight: 400;
+                color: rgba(0,0,0,.54);
+                display: block;
+            }
+            
+        }
+       
+        mykt-tablist-item-content {
+            @extend %mykt-tablist-section-base;
+            padding: 24px;
+            display:none;
+
+            mat-progress-bar {
+                margin: -24px;
+                padding: -24px;
+            }
+        }
+        
+        &.mykt-tablist-item-active {
+            margin: 16px -16px;
+            @include mat-elevation-transition;
+            @include mat-elevation(3);
+            & > .mykt-tablist-item-header-wrapper {
+                border: none;
+
+                .mykt-tablist-subtitle {
+                    display: none;
+                }
+            }
+            mykt-tablist-item-content {
+                display: block;
+            }
+        }
+
+    }
+}
+
+.actions {
+    padding: 0 10px 10px 0;
+}
+.no-padding {
+    padding: 0 !important;
+}

@@ -1,5 +1,5 @@
 //angular
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 //ngrx
@@ -17,14 +17,22 @@ import * as bookList from '../../shared/library/books/book-list.action';
     templateUrl: 'book-detail.component.html'
 })
 export class BookDetailComponent implements OnInit {
-    public book$: Observable<IBook>;
-    
+    @HostBinding('class.detail') baseCssClass = true;
 
+    book: IBook;
+    original: IBook;
+
+    private book$: Observable<IBook>;
+    
     constructor(private store: Store<IAppState>, private route: ActivatedRoute) { }
 
     ngOnInit() {
         this.book$ = this.store.let(getSelectedBook);
         let id = this.route.snapshot.params['id'];
         this.store.dispatch(new bookList.InitBookDetailAction(id));
+        this.book$.subscribe(book => {
+            this.original = book;
+            this.book = Object.assign({}, book); //copy book
+        });
     }
 }

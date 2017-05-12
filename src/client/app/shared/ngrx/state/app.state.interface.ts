@@ -5,4 +5,4 @@ import * as fromLibrary from '../../library/index';
  */
 export interface IAppState {
   books: fromLibrary.IBookState;
-};
+}

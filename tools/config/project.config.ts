@@ -45,6 +45,9 @@ export class ProjectConfig extends SeedAdvancedConfig {
     }, {
       name: 'hammerjs',
       path: 'node_modules/hammerjs/hammer.min.js'
+    }, {
+      name: '@angular/flex-layout',
+      path: 'node_modules/@angular/flex-layout/bundles/flex-layout.umd.js'
     }];
     this.addPackagesBundles(additionalPackages);
 

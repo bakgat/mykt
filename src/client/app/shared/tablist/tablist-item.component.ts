@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, ViewEncapsulation, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { TabListContentComponent } from './tablist-content.component';
 
@@ -6,16 +6,10 @@ import { TabListContentComponent } from './tablist-content.component';
     moduleId: module.id,
     selector: 'mykt-tablist-item',
     templateUrl: 'tablist-item.component.html',
-    encapsulation: ViewEncapsulation.None,
-    host: {
-        '[class.mykt-tablist-item-active]': 'active',
-        '[class.mykt-tablist-item-disabled]': 'disabled'
-    }
+    encapsulation: ViewEncapsulation.None
 })
 export class TabListItemComponent {
-
-    private _disabled: boolean = false;
-    private _active: boolean = false;
+    @HostBinding('class.mykt-tablist-item') baseCssClass = true;
 
     @Output() onSelect: EventEmitter<any> = new EventEmitter<any>();
     @Output() onSave: EventEmitter<any> = new EventEmitter<any>();
@@ -25,16 +19,22 @@ export class TabListItemComponent {
     @Input() cancelLabel: string;
     @Input() saveLabel: string;
 
+
+    private _disabled: boolean = false;
+    private _active: boolean = false;
+
     @Input()
+    @HostBinding('class.mykt-tablist-item-disabled')
     get disabled(): boolean { return this._disabled; }
     set disabled(value) {
-        this._disabled = value != null && value != false;
+        this._disabled = value !== null && value !== false;
     }
 
     @Input()
+    @HostBinding('class.mykt-tablist-item-active')
     get active(): boolean { return this._active; }
     set active(value) {
-        this._active = value != null && value != false;
+        this._active = value !== null && value !== false;
         if (this._active) {
             for (let i = 0; i < this._list.items.length; i++) {
                 if (this._list.items[i] !== this) {
@@ -80,7 +80,7 @@ export class TabListItemComponent {
     findTabIndex() {
         let index = -1;
         for (let i = 0; i < this._list.items.length; i++) {
-            if (this._list.items[i] == this) {
+            if (this._list.items[i] === this) {
                 index = i;
                 break;
             }

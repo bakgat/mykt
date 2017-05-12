@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Output, EventEmitter, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Output, EventEmitter, Input, HostBinding } from '@angular/core';
 
 //app
 import { TabListItemComponent } from './tablist-item.component';
@@ -6,13 +6,12 @@ import { TabListItemComponent } from './tablist-item.component';
 @Component({
     moduleId: module.id,
     selector: 'mykt-tablist-content',
-    host: {
-        '[class.mykt-tablist-content]': 'true'
-    },
     template: '<ng-content></ng-content>',
     encapsulation: ViewEncapsulation.None
 })
 export class TabListContentComponent {
+    @HostBinding('class.mykt-tablist-content') baseCssClass = true;
+
     items: TabListItemComponent[] = [];
 
     @Output() close: EventEmitter<any> = new EventEmitter<any>();
@@ -27,5 +26,4 @@ export class TabListContentComponent {
             this.items[i].active = false;
         }
     }
-
 }

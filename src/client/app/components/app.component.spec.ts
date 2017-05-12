@@ -17,11 +17,11 @@ import { TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS } from '../shared/core/testing
 import { NameListService, NavbarComponent, ToolbarComponent } from '../shared/sample/index';
 import { MultilingualModule } from '../shared/i18n/multilingual.module';
 import { reducer } from '../shared/i18n/index';
+import { TABLIST_COMPONENTS } from '../shared/tablist/index';
 
-// module
-import { AppComponent } from './app.component';
-import { DEFAULT_COMPONENTS }  from './layouts/index';
-import { LIBRARY_COMPONENTS, BooksComponent } from './library/index';
+// modules
+import { AppComponent, APP_COMPONENTS } from './index';
+import { BooksComponent } from './library/index';
 
 const config: Route[] = [
   { path: 'library/books', component: BooksComponent }
@@ -41,16 +41,14 @@ const testModuleConfig = () => {
       RouterTestingModule.withRoutes(config)
     ],
     declarations: [
-      ...DEFAULT_COMPONENTS,
-      ...LIBRARY_COMPONENTS,
-      TestComponent, AppComponent,
+      ...APP_COMPONENTS,
+      ...TABLIST_COMPONENTS
       /* HomeComponent, AboutComponent,
        NavbarComponent, ToolbarComponent*/
     ],
     providers: [
       TEST_CORE_PROVIDERS(),
-      TEST_HTTP_PROVIDERS(),
-      NameListService
+      TEST_HTTP_PROVIDERS()
     ]
   });
 };
@@ -64,16 +62,10 @@ export function main() {
       t.async(() => {
         TestBed.compileComponents()
           .then(() => {
-            let fixture = TestBed.createComponent(TestComponent);
+            let fixture = TestBed.createComponent(AppComponent);
             fixture.detectChanges();
             t.e(fixture.nativeElement).toBeTruthy();
           });
       }));
   });
 }
-
-@Component({
-  selector: 'test-cmp',
-  template: '<mykt-app></mykt-app>'
-})
-class TestComponent { }
